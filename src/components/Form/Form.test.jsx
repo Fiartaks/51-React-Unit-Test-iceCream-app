@@ -36,7 +36,7 @@ test('Kosullarin onaylanmasina gore butonlarin aktifligi', async () =>{
 
 })
 
-test('Onay butonu hover durumuna gore bildiodirm gozukmesi', ()=>{
+test('Onay butonu hover durumuna gore bildiodirm gozukmesi', async ()=>{
     //user kurulumu yap
     const user = userEvent.setup()
     //test edicecek lemanlari ekrana bas
@@ -48,6 +48,29 @@ test('Onay butonu hover durumuna gore bildiodirm gozukmesi', ()=>{
     //normal sartlarda cagiridkmiz zaman icindeki elemanin tamaninin veririz ama exact true ile yazmanaya gerek kalmaz
 
     //regex daha kolay /size gerckten/i
-    
-    const popup = screen.getByText(' Size gercekten bir sey teslim etcez ')
+
+    //const popup = screen.getByText(' Size gercekten bir sey teslim etcez ')
+
+
+   const popup =screen.getByText(/size gercekten/i)
+
+   //1) checkbox i tikle
+    await user.click(checkBox)
+   
+   //2) bildirim gozukuyor mu
+   expect(popup).not.toBeVisible()
+
+   //3)mouse butonunu uzerine gotur
+   fireEvent.mouseEnter(button)
+
+   //4)bildirim gozukuyor mu
+    expect(popup).toBeVisible()
+
+   //5)mouse butonu uzerinden checked
+    fireEvent.mouseLeave(button)
+
+
+   //6)bildirim gozukmuyor mu
+    expect(popup).not.toBeVisible()
+
 })
