@@ -24,7 +24,7 @@ const Toppings = () => {
         Tanesi <span className="text-success">3$</span>
       </p>
       <h3>
-        Soslar Ucreti <span data-testid="total">0</span>$
+        Soslar Ucreti <span data-testid="total">{basket.length*3}</span>$
       </h3>
 
       <div className="row gap-3 p-3">
@@ -34,7 +34,7 @@ const Toppings = () => {
               htmlFor={item.name}
               className="d-flex flex-column align-items-center gap-3"
             >
-              <img height={100} src={item.imagePath} alt="" />
+              <img height={100} src={item.imagePath} alt="sos-resim" />
               <p className="text-nowrap text-center">{item.name}</p>
             </label>
 

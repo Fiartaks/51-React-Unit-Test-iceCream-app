@@ -35,7 +35,7 @@ code {
   cursor: pointer;
 }
 .top-card:has(input:checked){
-  box-shadow: 0 0 15px white;
+  box-shadow: 0 0 45px white;
   border: 1px solid white;
 }
 .top-card input{
